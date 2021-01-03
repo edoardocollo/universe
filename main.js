@@ -184,7 +184,7 @@ function init(){
   scene.add(pointLight);
   // create some ambient light
   var ambientLight = new THREE.AmbientLight(0xAAAAAA);
-  scene.add(ambientLight);
+  // scene.add(ambientLight);
   // create the sun
   var sunMaterial = getMaterial('basic', 'rgb(255,255,255)');
   sun = getSphere(sunMaterial,16,48);
