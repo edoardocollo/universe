@@ -1,7 +1,7 @@
 var pointLight, sun, moon, earth, earthOrbit, ring, controls, scene, camera, renderer;
 var planetSegments = 48;
 var earthData = constructPlanetData(365.2564, 0.015, 25, "earth", "img/earth.jpg", 1, planetSegments);
-var edoData = constructPlanetData(365.2564, 0.015, 40, "edo", "img/edo.png", 1, planetSegments);
+var edoData = constructPlanetData(65.2564, 0.015, 40, "edo", "img/edo.png", 4, planetSegments);
 var moonData = constructPlanetData(29.5, 0.01, 2.8, "moon", "img/moon.jpg", 0.5, planetSegments);
 var orbitData = {value:200, runOrbit:true, runRotation:true};
 var clock = new THREE.Clock();
@@ -194,7 +194,7 @@ function init(){
     map: new THREE.ImageUtils.loadTexture("img/glow.png"),
     useScreenCoordinates: false,
     color: 0xFFFFEE,
-    transparent:false,
+    transparent:true,
     blending: THREE.AdditiveBlending
   });
   var sprite = new THREE.Sprite(spriteMaterial);
@@ -204,7 +204,7 @@ function init(){
   earth = loadTexturedPlanet(earthData, earthData.distanceFromAxis,0,0);
   edo = loadTexturedPlanet(edoData, edoData.distanceFromAxis,0,0);
   moon = loadTexturedPlanet(moonData, moonData.distanceFromAxis,0,0);
-  ring = getTube(3,0.05,20,320,0x757064,'ring',earthData.distanceFromAxis);
+  ring = getTube(3.03,0.05,20,320,0x757064,'ring',earthData.distanceFromAxis);
   // create visible orbit for earth
   createVisibleOrbits();
   // create GUI that display controls
