@@ -29,8 +29,8 @@ function getRing(size, innerDiameter, facets, myColor, name, distanceFromAxis){
   return myRing;
 }
 // function creating orbit tube
-function getTube(size, innerDiameter, facets, myColor, name, distanceFromAxis){
-  var ringGeometry = new THREE.TorusGeometry(size, innerDiameter, facets);
+function getTube(size, innerDiameter, radialFacets, facets, myColor, name, distanceFromAxis){
+  var ringGeometry = new THREE.TorusGeometry(size, innerDiameter, radialFacets, facets);
   var ringMaterial = new THREE.MeshBasicMaterial({color: myColor, side: THREE.DoubleSide});
   var myRing = new THREE.Mesh(ringGeometry, ringMaterial);
   myRing.name = name;
@@ -201,7 +201,7 @@ function init(){
   // create all the element
   earth = loadTexturedPlanet(earthData, earthData.distanceFromAxis,0,0);
   moon = loadTexturedPlanet(moonData, moonData.distanceFromAxis,0,0);
-  ring = getTube(1.8,0.05,480,0x757064,'ring',earthData.distanceFromAxis);
+  ring = getTube(3,0.05,20,320,0x757064,'ring',earthData.distanceFromAxis);
   // create visible orbit for earth
   createVisibleOrbits();
   // create GUI that display controls
