@@ -2,6 +2,7 @@ var pointLight, sun, moon, earth, earthOrbit, ring, controls, scene, camera, ren
 var planetSegments = 48;
 var earthData = constructPlanetData(365.2564, 0.015, 25, "earth", "img/earth.jpg", 1, planetSegments);
 var edoData = constructPlanetData(65.2564, 0.015, 40, "edo", "img/edo.png", 4, planetSegments);
+var boolData = constructPlanetData(200, 0.015, 60, "bool", "img/bool.png", 6, planetSegments);
 var moonData = constructPlanetData(29.5, 0.01, 2.8, "moon", "img/moon.jpg", 0.5, planetSegments);
 var orbitData = {value:200, runOrbit:true, runRotation:true};
 var clock = new THREE.Clock();
@@ -203,6 +204,7 @@ function init(){
   // create all the element
   earth = loadTexturedPlanet(earthData, earthData.distanceFromAxis,0,0);
   edo = loadTexturedPlanet(edoData, edoData.distanceFromAxis,0,0);
+  bool = loadTexturedPlanet(boolData, boolData.distanceFromAxis,0,0);
   moon = loadTexturedPlanet(moonData, moonData.distanceFromAxis,0,0);
   ring = getTube(3.03,0.05,20,320,0x757064,'ring',earthData.distanceFromAxis);
   // create visible orbit for earth
@@ -222,3 +224,19 @@ function init(){
 }
 // start everything
 init();
+
+
+
+window.addEventListener("keydown", event => {
+  // do something
+  if (event.keyCode == 39) {
+    bool.rotation.y += 1;
+  }else if (event.keyCode == 37){
+    bool.rotation.y -= 1;
+  }else if (event.keyCode == 38) {
+    bool.rotation.x += 1;
+  }else if (event.keyCode == 40) {
+    bool.rotation.x -= 1;
+  }
+  console.log(event.keyCode);
+});
