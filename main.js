@@ -1,3 +1,6 @@
+
+
+
 var pointLight, sun, moon, earth, earthOrbit, ring, controls, scene, camera, renderer;
 var planetSegments = 48;
 var earthData = constructPlanetData(365.2564, 0.015, 25, "earth", "img/earth.jpg", 1, planetSegments);
@@ -185,7 +188,7 @@ function init(){
   scene.add(pointLight);
   // create some ambient light
   var ambientLight = new THREE.AmbientLight(0xAAAAAA);
-  // scene.add(ambientLight);
+  scene.add(ambientLight);
   // create the sun
   var sunMaterial = getMaterial('basic', 'rgb(255,255,255)');
   sun = getSphere(sunMaterial,16,48);
@@ -209,6 +212,17 @@ function init(){
   ring = getTube(3.03,0.05,20,320,0x757064,'ring',earthData.distanceFromAxis);
   // create visible orbit for earth
   createVisibleOrbits();
+  // LOAD MODEL
+  var loader = new THREE.GLTFLoader();
+loader.load('Earth.gltf', handle_load);
+function handle_load(gltf){
+  mesh = gltf.scene.children[0];
+  mesh.scale.set(2,2,2);
+  scene.add(mesh);
+  mesh.position.x = -40;
+}
+
+
   // create GUI that display controls
   var gui = new dat.GUI();
   var folder1 = gui.addFolder('light');
@@ -240,16 +254,16 @@ window.addEventListener("keydown", event => {
   // }
   switch (event.keyCode) {
     case 39:
-      bool.rotation.y += 1;
+      bool.rotation.y += 0.5;
       break;
     case 37:
-      bool.rotation.y -= 1;
+      bool.rotation.y -= 0.5;
       break;
     case 38:
-      bool.rotation.x += 1;
+      bool.rotation.x += 0.5;
       break;
     case 40:
-      bool.rotation.x -= 1;
+      bool.rotation.x -= 0.5;
       break;
     case 49:
     camera.position.y = 6.5;
