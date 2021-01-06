@@ -229,14 +229,31 @@ init();
 
 window.addEventListener("keydown", event => {
   // do something
-  if (event.keyCode == 39) {
-    bool.rotation.y += 1;
-  }else if (event.keyCode == 37){
-    bool.rotation.y -= 1;
-  }else if (event.keyCode == 38) {
-    bool.rotation.x += 1;
-  }else if (event.keyCode == 40) {
-    bool.rotation.x -= 1;
+  // if (event.keyCode == 39) {
+  //   bool.rotation.y += 1;
+  // }else if (event.keyCode == 37){
+  //   bool.rotation.y -= 1;
+  // }else if (event.keyCode == 38) {
+  //   bool.rotation.x += 1;
+  // }else if (event.keyCode == 40) {
+  //   bool.rotation.x -= 1;
+  // }
+  switch (event.keyCode) {
+    case 39:
+      bool.rotation.y += 1;
+      break;
+    case 37:
+      bool.rotation.y -= 1;
+      break;
+    case 38:
+      bool.rotation.x += 1;
+      break;
+    case 40:
+      bool.rotation.x -= 1;
+      break;
+
+    default:
+
   }
   console.log(event.keyCode);
 });
