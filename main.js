@@ -251,9 +251,26 @@ window.addEventListener("keydown", event => {
     case 40:
       bool.rotation.x -= 1;
       break;
+    case 49:
+    camera.position.y = 6.5;
+    camera.position.x = 60;
+    camera.position.z = 0;
+
+      break;
+    case 50:
+    camera.position.z = 30;
+    camera.position.x = -30;
+    camera.position.y = 30;
+      break;
 
     default:
 
   }
   console.log(event.keyCode);
 });
+var cam2BoxGeometry = new THREE.BoxGeometry(1,1,1);
+var camBoxMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: false});
+var cam2Box = new THREE.Mesh(cam2BoxGeometry,camBoxMaterial);
+cam2Box.position.x = 60;
+cam2Box.position.y = 6.5;
+scene.add(cam2Box);
