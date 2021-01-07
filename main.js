@@ -214,14 +214,23 @@ function init(){
   createVisibleOrbits();
   // LOAD MODEL
   var loader = new THREE.GLTFLoader();
-loader.load('Earth.gltf', handle_load);
+loader.load('Planet.gltf', handle_load);
 function handle_load(gltf){
   mesh = gltf.scene.children[0];
-  mesh.scale.set(2,2,2);
+  mesh.scale.set(10,10,10);
   scene.add(mesh);
   mesh.position.x = -40;
 }
+var loader2 = new THREE.GLTFLoader();
+loader2.load('Duck.glb', handle_load2);
+function handle_load2(gltf){
+mesh2 = gltf.scene.children[0];
+mesh2.scale.set(0.3,0.3,0.3);
+scene.add(mesh2);
+mesh2.position.x = -40;
+mesh2.position.z = -80;
 
+}
 
   // create GUI that display controls
   var gui = new dat.GUI();
